@@ -21,12 +21,13 @@
     "format-duration": "^1.4.0",
     "framer-motion": "^4.1.17",
     "jsonwebtoken": "^8.5.1",
-    "next": "12.0.7",
+    "next": "^12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-howler": "^5.2.0",
     "react-icons": "^4.3.1",
     "reset-css": "^5.0.1",
+    "superjson": "^1.9.1",
     "swr": "^1.1.1"
   },
   "devDependencies": {
@@ -45,7 +46,8 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.4.1",
     "prisma": "^3.6.0",
-    "ts-node": "^10.4.0"
+    "ts-node": "^10.4.0",
+    "typescript": "^4.6.0-dev.20211116"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
