@@ -6,20 +6,22 @@ import prisma from '../../lib/prisma'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const salt = bcrypt.genSaltSync()
-  const { email, password } = req.body
+  const { firstName, lastName, email, password } = req.body
 
   let user
 
   try {
     user = await prisma.user.create({
       data: {
+        firstName,
+        lastName,
         email,
         password: bcrypt.hashSync(password, salt),
       },
     })
   } catch (e) {
-    res.status(401)
-    res.json({ error: 'User already exists' })
+    // res.status(401).json({ error: 'User already exists' })
+    console.log({ error: e.message })
     return
   }
 
