@@ -36,6 +36,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
       <StoreProvider store={store}>
+        {/* opt out the layout for signin and signup */}
         {Component.authPage ? (
           <Component {...pageProps} />
         ) : (

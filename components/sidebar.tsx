@@ -41,7 +41,7 @@ const musicMenu = [
   {
     name: 'Create Playlist',
     icon: MdPlaylistAdd,
-    route: '/',
+    route: '/create-playlist',
   },
   {
     name: 'Favorites',
@@ -109,7 +109,9 @@ const Sidebar = () => {
         <Divider color="gray.800" />
         <Box height="66%" overflowY="auto" paddingY="20px">
           <List spaceing={2}>
-            {playlists.sort((a, b) => b.id - a.id).map((playlist) => (
+            {
+            playlists.length > 0 ? (
+            playlists.map((playlist) => (
               <ListItem paddingX="20px" key={playlist.id}>
                 <LinkBox>
                   <NextLink
@@ -123,7 +125,7 @@ const Sidebar = () => {
                   </NextLink>
                 </LinkBox>
               </ListItem>
-            ))}
+            ))) : (<></>)}
           </List>
         </Box>
       </Box>

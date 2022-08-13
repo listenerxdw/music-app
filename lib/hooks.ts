@@ -1,6 +1,8 @@
+// library to get the data and save locally
 import useSWR from 'swr'
 import fetcher from './fetcher'
 
+// hook to get the user
 export const useMe = () => {
   const { data, error } = useSWR('/me', fetcher)
 

@@ -5,20 +5,21 @@ import { useSWRConfig } from 'swr'
 import NextImage from 'next/image'
 import { auth } from '../lib/mutations'
 
+// mode: string
 const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [firstName, setFirstname] = useState('')
-  // const [lastName, setLastname] = useState('')
+  const [firstName, setFirstname] = useState('')
+  const [lastName, setLastname] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsLoading(true)
-
-    await auth(mode, {email, password })
+    await auth(mode, {firstName, lastName, email, password})
     setIsLoading(false)
+    // route to homepage after signin
     router.push('/')
   }
 
@@ -35,16 +36,20 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
       <Flex justify="center" align="center" height="calc(100vh - 100px)">
         <Box padding="50px" bg="gray.900" borderRadius="6px">
           <form onSubmit={handleSubmit}>
-            {/* <Input
-              placeholder="firstname"
-              type="firstname"
-              onChange={(e) => setFirstname(e.target.value)}
-            />
-            <Input
-              placeholder="lastname"
-              type="lastname"
-              onChange={(e) => setLastname(e.target.value)}
-            /> */}
+            { (mode === 'signup') ? (
+              <>
+              <Input
+                placeholder="firstname"
+                type="firstname"
+                onChange={(e) => setFirstname(e.target.value)}
+              />
+              <Input
+                placeholder="lastname"
+                type="lastname"
+                onChange={(e) => setLastname(e.target.value)}
+              />
+              </>) : (null)
+            }
             <Input
               placeholder="email"
               type="email"

@@ -37,7 +37,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       })
     )
 
-    res.json(user)
+    res.json({message: "User has signed in.", user})
   } else {
     res.status(401)
     res.json({ error: 'Email or Password is wrong' })
